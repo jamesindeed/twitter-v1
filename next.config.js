@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['rb.gy'],
+    domains: ['rb.gy', 'cdn-icons-png.flaticon.com', 'cdn-icons.flaticon.com'],
   },
 };
