@@ -12,12 +12,13 @@ import {
   DotsCircleHorizontalIcon,
   DotsHorizontalIcon,
 } from '@heroicons/react/outline';
+import TwitterIcon from '../assets/twitter.png';
 
 const Sidebar = () => {
   return (
     <div className='hidden sm:flex flex-col items-center xl:items-start xl:w-[340px] p-2 fixed h-full'>
       <div className='flex items-center justify-center p-0 w-14 h-14 hoverAnimation xl:ml-24'>
-        <Image src='https://rb.gy/ogau5a' width={30} height={30} />
+        <Image src={TwitterIcon} alt='TwitterIcon' width={30} height={30} />
       </div>
       <div className='space-y-2.5 mt-4 mb-2.5 xl:ml-24'>
         <SidebarIcons text='Home' Icon={HomeIcon} active />
