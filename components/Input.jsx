@@ -17,8 +17,10 @@ import {
 import { getDownloadURL, ref, uploadString } from '@firebase/storage';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
+import { useSession } from 'next-auth/react';
 
 const Input = () => {
+  const { data: session } = useSession();
   const [input, setInput] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
@@ -49,10 +51,10 @@ const Input = () => {
     setLoading(true);
 
     const docRef = await addDoc(collection(db, 'posts'), {
-      // id: session.user.uid,
-      // username: session.user.name,
-      // userImg: session.user.image,
-      // tag: session.user.tag,
+      id: session.user.uid,
+      username: session.user.name,
+      userImg: session.user.image,
+      tag: session.user.tag,
       text: input,
       timestamp: serverTimestamp(),
     });
@@ -81,7 +83,11 @@ const Input = () => {
       }`}
     >
       <img
-        src='https://avataaars.io/?avatarStyle=Circle&topType=WinterHat3&accessoriesType=Blank&hatColor=PastelRed&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Happy&eyebrowType=FlatNatural&mouthType=Smile&skinColor=Light'
+        src={
+          session
+            ? session?.user.image
+            : 'https://avataaars.io/?avatarStyle=Circle&topType=WinterHat3&accessoriesType=Blank&hatColor=PastelRed&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Happy&eyebrowType=FlatNatural&mouthType=Smile&skinColor=Light'
+        }
         alt=''
         className='rounded-full cursor-pointer h-11 w-11'
       />
