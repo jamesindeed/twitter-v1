@@ -13,7 +13,7 @@ export default function Home({ trendingResults, followResults, providers }) {
         <title>Twitter</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className='flex min-h-screen mx-auto bg-black max-w-screen-2xl'>
+      <div className='flex min-h-screen mx-auto max-w-screen-2xl'>
         <Sidebar />
         <Feed />
         <Widgets />
